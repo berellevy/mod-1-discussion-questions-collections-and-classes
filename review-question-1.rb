@@ -1,4 +1,5 @@
-## QUESTION 1
+require 'pry'
+require 'json'
 
 pokemon = [
   {
@@ -60,10 +61,21 @@ pokemon = [
 }
 ]
 
+# pokemon = JSON.parse(pokemon)
 
 # How would you get the url for Bulbasaur's ability?
+pokemon[0][:abilities][0][:ability][:url]
+binding.pry
+
 # How would you return the first pokemon with base experience over 40?
+pokemon.find { |p| p[:base_experience] >= 40}
 # How would you return ALL OF THE pokemon with base experience over 40? (Gotta catch em all)
+pokemon.select { |p| p[:base_experience] >= 40}
 # How would you return an array of all of the pokemon's names?
+pokemon.map { |p| p[:name] }
 # How would you determine whether or not the pokemon array contained any pokemon with a weight greater than 60?
+pokemon.any? { |p| p[:weight] >= 60}
 #  whatever method you use should return true if there are any such pokemon, false if not.
+
+
+
