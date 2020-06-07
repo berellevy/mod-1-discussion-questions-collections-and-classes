@@ -61,11 +61,9 @@ pokemon = [
 }
 ]
 
-# pokemon = JSON.parse(pokemon)
 
 # How would you get the url for Bulbasaur's ability?
 pokemon[0][:abilities][0][:ability][:url]
-binding.pry
 
 # How would you return the first pokemon with base experience over 40?
 pokemon.find { |p| p[:base_experience] >= 40}

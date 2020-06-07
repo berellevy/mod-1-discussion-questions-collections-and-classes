@@ -47,5 +47,3 @@ volvo_lightning.make
 volvo_lightning.model
 #=> "Lightning
 
-
-binding.pry
