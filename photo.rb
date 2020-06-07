@@ -10,11 +10,11 @@ class Photo
     @@all << self
   end
 
-  # putting this by a user.
+  # putting this by a user. revised: user will call this method
 
-  # def add_comment
-  #   Comment.new(photo: self)
-  # end
+  def add_comment(hash)
+    Comment.new(photo: self, text: hash[:text], user: hash[:user])
+  end
   
   
   def user_name
@@ -23,7 +23,7 @@ class Photo
   
 
   def comments
-    Comment.all.select { |cmt| cmt.photo = self}
+    Comment.all.select { |cmt| cmt.photo == self }
   end
 
   def comment_users
@@ -33,6 +33,10 @@ class Photo
 
   def self.all
     @@all
+  end
+
+  def self.pick_random
+    self.all.shuffle[0]
   end
   
   

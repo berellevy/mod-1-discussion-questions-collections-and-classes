@@ -20,11 +20,32 @@ photos = [
   "poop",
   "breakfast",
   "lunch at th beach",
-  "baby smiling"
+  "baby smiling",
+  "the kids",
+  "the parents"
 ]
 
 
+
 users.each { |u| User.new(u)}
+
+User.all.each { |u| u.add_photo(photos.shuffle[0]) }
+
+User.all.each { |u| u.add_comment(photo: Photo.pick_random, text: "blah bidi blah") }
+User.all.each { |u| u.add_comment(photo: Photo.pick_random, text: "blah bidi blah") }
+
+User.all.each { |u| u.subscribe(User.pick_random) }
+
+
+berel = User.all[0]
+rochie = User.all[1]
+rochie.add_photo("the kids")
+the_kiids = Photo.all[0]
+berel.add_comment(photo: the_kiids, text: "soooooo cute")
+
+
+## need to write some more tests lol
+
 
 binding.pry
 

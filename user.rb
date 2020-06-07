@@ -13,6 +13,11 @@ class User
     @@all << self
     @account_number = self.class.count
   end
+
+  def self.pick_random
+    self.all.shuffle[0]
+  end
+  
   
   def self.all
     @@all
@@ -30,6 +35,11 @@ class User
     photos.map { |p| p.comments }
   end
 
+  def photo_comment_users
+    photo_comments.map { |c| c.user}
+  end
+  
+
   def comments
     Comment.all.select { |c| c.user == self }
   end
@@ -39,16 +49,17 @@ class User
   end
 
   def add_comment(hash)
-    Comment.new(user: self, photo: hash[:photo], text: hash[:text])
+    hash[:photo].add_comment(user: self, text: hash[:text])
+    
   end
   
   
   
   def add_photo(title)
-    Photo.new(user: self, title: self)
+    Photo.new(user: self, title: title)
   end
 
-  def subscribe(user)
+  def subscribe(user) ### check for existing subscription first!!!!
     Subscription.new(subscriber: self, subscribee: user)
   end
   
