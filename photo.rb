@@ -16,8 +16,9 @@ class Photo
   #   Comment.new(photo: self)
   # end
   
+  
   def user_name
-    self.user.name
+    user.name
   end
   
 
